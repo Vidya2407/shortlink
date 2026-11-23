@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh 'python3 -m venv venv'
+                sh 'python3 -m venv --system-site-packages venv'
                 sh '. venv/bin/activate && pip install -r requirements.txt'
             }
         }
