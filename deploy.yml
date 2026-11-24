@@ -1,0 +1,20 @@
+- name: Deploy ShortLink
+  hosts: local
+  tasks:
+    - name: Run the ShortLink container
+      community.docker.docker_container:
+        name: shortlink
+        image: shortlink:latest
+        state: started
+        recreate: true
+        ports:
+          - "5001:5000"
+
+    - name: Check the app is healthy
+      ansible.builtin.uri:
+        url: http://localhost:5001/health
+        status_code: 200
+      register: result
+      retries: 5
+      delay: 3
+      until: result.status == 200
