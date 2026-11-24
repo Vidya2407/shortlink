@@ -9,6 +9,10 @@
         recreate: true
         ports:
           - "5001:5000"
+        env:
+          DB_PATH: /data/links.db
+        volumes:
+          - shortlink_data:/data
 
     - name: Check the app is healthy
       ansible.builtin.uri:
