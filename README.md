@@ -16,6 +16,7 @@ Python, Flask, SQLite, pytest, Docker, Jenkins, Ansible
 - Jenkins pipeline (Jenkinsfile) that installs dependencies and runs the tests on every build
 - Dockerfile for the app image
 - Ansible playbook (deploy.yml) that runs the container and verifies the /health endpoint
+- Docker volume keeps the SQLite database across redeployments
 
 ## Run locally
 ```bash
